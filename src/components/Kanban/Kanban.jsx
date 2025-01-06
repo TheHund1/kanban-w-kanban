@@ -49,7 +49,7 @@ export default function Kanban() {
           onChange={(e) => setNewTaskText(e.target.value)}
           placeholder="Add new task"
         />
-        <button type="submit">Add</button>
+        <button type="submit" class="add-task-button">Add</button>
       </form>
 
       <div className="board">

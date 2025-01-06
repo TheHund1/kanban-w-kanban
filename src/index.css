@@ -66,3 +66,35 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.board {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.column {
+  flex: 1;
+  min-width: 250px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.app-header{
+  width: 100%;
+  display: flex;
+  text-align: center;
+}
+
+.sign-out-button{
+  margin-left: auto;
+  max-height: 48px;
+  align-self: center;
+}
+
+.add-task-button {
+  margin-left: 1rem;
+}

@@ -9,8 +9,8 @@ function App() {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="top-header">
+      <header className="app-header">
         <h1>Kanban w Kanban</h1>
         <SignOut />
       </header>
