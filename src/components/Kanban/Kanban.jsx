@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { collection, orderBy, query, addDoc, serverTimestamp, doc, updateDoc } from 'firebase/firestore';
+import { collection, orderBy, query, addDoc, serverTimestamp, doc, updateDoc,deleteDoc } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { auth, firestore } from '../../config/firebase';
 import Task from '../Task/Task';
@@ -32,6 +32,10 @@ export default function Kanban() {
     });
   }
 
+  const deleteTask = async(taskId) => {
+    const taskRef = doc(firestore, 'tasks', taskId);
+    await deleteDoc(taskRef);
+  }
   const getTasksByStatus = (status) => {
     if (!tasks) return [];
     const tasksData = tasks.docs.map(doc => ({
@@ -49,28 +53,28 @@ export default function Kanban() {
           onChange={(e) => setNewTaskText(e.target.value)}
           placeholder="Add new task"
         />
-        <button type="submit" class="add-task-button">Add</button>
+        <button type="submit" className="add-task-button">Add</button>
       </form>
 
       <div className="board">
         <div className="column">
           <h2>To do</h2>
           {getTasksByStatus('todo').map(task => (
-            <Task key={task.id} task={task} onMove={moveTask} />
+            <Task key={task.id} task={task} onMove={moveTask} onDelete={deleteTask} />
           ))}
         </div>
 
         <div className="column">
           <h2>In Progress</h2>
           {getTasksByStatus('inProgress').map(task => (
-            <Task key={task.id} task={task} onMove={moveTask} />
+            <Task key={task.id} task={task} onMove={moveTask} onDelete={deleteTask} />
           ))}
         </div>
 
         <div className="column">
           <h2>Done</h2>
           {getTasksByStatus('done').map(task => (
-            <Task key={task.id} task={task} onMove={moveTask} />
+            <Task key={task.id} task={task} onMove={moveTask} onDelete={deleteTask} />
           ))}
         </div>
       </div>

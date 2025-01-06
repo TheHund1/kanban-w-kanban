@@ -98,3 +98,11 @@ button:focus-visible {
 .add-task-button {
   margin-left: 1rem;
 }
+
+.delete-task-button{
+  color:#f44336;
+}
+
+.task {
+  border-top: #242424 solid;
+}
